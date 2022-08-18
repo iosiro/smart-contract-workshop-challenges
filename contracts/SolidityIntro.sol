@@ -58,6 +58,7 @@ contract SolidityIntro {
     }
 
     function _burn(address account, uint amount) private {
+        require(balances[account] >= amount, "Insufficient balance to burn");
         totalSupply -= amount;
         balances[account] -= amount;
     }
@@ -72,7 +73,7 @@ contract SolidityIntro {
         return balances[account];
     }
 
-    function priceOf(uint amount) public pure returns (uint) {
+    function priceForTokens(uint amount) public pure returns (uint) {
         return _tokenPrice * amount;
     }
 
@@ -80,7 +81,7 @@ contract SolidityIntro {
     //      transaction when calling this function. payable functions are used when a user
     //      needs to "pay" ether in order to perform a task. This is not the same as gas fees.
     function buyTokens(uint amount) public payable returns (uint) {
-        uint _price = priceOf(amount);
+        uint _price = priceForTokens(amount);
 
         // msg.value will contain the amount of ether, expressed in wei, attached to the tx
         require(msg.value == _price, "Incorrect amount of eth supplied for the purchase");
@@ -90,18 +91,20 @@ contract SolidityIntro {
     }
 
     function sellTokens(uint amount) public returns (uint) {
-        uint _price = priceOf(amount);
+        uint _price = priceForTokens(amount);
 
         _burn(msg.sender, amount);
         
-        // a contract can "send" ether to other addresses in one of three ways:
-        //  
+        // There are multiple awys a contract can send ether to other
+        // contracts. In this example, we are "calling" the address, specifying
+        // an eth value to attach to it, but with empty call data. This works
+        // for contracts that implement the receive() function, or externally-owned
+        // accounts (human beans with private keys)
         (bool success,) = payable(msg.sender).call{value: _price}("");
         require(success, "transfer failed");
 
         return amount;
     }
-
 
     fallback() external payable {}
     receive() external payable {}

@@ -95,7 +95,7 @@ contract SolidityIntro {
 
         _burn(msg.sender, amount);
         
-        // There are multiple awys a contract can send ether to other
+        // There are multiple ways a contract can send ether to other
         // contracts. In this example, we are "calling" the address, specifying
         // an eth value to attach to it, but with empty call data. This works
         // for contracts that implement the receive() function, or externally-owned

@@ -10,7 +10,7 @@ The `SolidityIntro` contract (`contracts/SolidityIntro.sol`) and `JavascriptExam
 
 # Challenges
 
-The challenge contracts can all be found in the `contracts` directory. A suggestion is to try complete them from easy to difficult, implying the following order:
+The challenge contracts can all be found in the `contracts` directory. Try them from easiest to hardest, in the following order:
 
 * `Telephone.sol`: How could `msg.sender` potentially change over the course of a transaction?
 * `CoinFlip.sol`: A game of chance on the inherently deterministic blockchain. Smart.

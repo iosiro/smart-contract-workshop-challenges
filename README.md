@@ -12,7 +12,7 @@ The `SolidityIntro` contract (`contracts/SolidityIntro.sol`) and `JavascriptExam
 
 The challenge contracts can all be found in the `contracts` directory. A suggestion is to try complete them from easy to difficult, implying the following order:
 
-* `Telephone.sol` - How could `msg.sender` could potentially change over the course of a transaction?
+* `Telephone.sol`: How could `msg.sender` potentially change over the course of a transaction?
 * `CoinFlip.sol` - It's a game of chance on a thing that is inherintly deterministic. Smart.
 * `Reentrancy.sol` - Perhaps one of the most common classes of vulnerabilities in crypto space. Sometimes smart contracts don't anticipate the side-effects of giving execution to another, potentially malicious, contract halfway through executing a function.
 

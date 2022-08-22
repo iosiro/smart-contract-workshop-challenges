@@ -14,7 +14,7 @@ The challenge contracts can all be found in the `contracts` directory. A suggest
 
 * `Telephone.sol`: How could `msg.sender` potentially change over the course of a transaction?
 * `CoinFlip.sol`: A game of chance on the inherently deterministic blockchain. Smart.
-* `Reentrancy.sol` - Perhaps one of the most common classes of vulnerabilities in crypto space. Sometimes smart contracts don't anticipate the side-effects of giving execution to another, potentially malicious, contract halfway through executing a function.
+* `Reentrancy.sol`: Perhaps one of the most common classes of vulnerabilities in crypto space. Sometimes smart contracts don't anticipate the side-effects of giving execution to another, potentially malicious, contract halfway through executing a function.
 
 ## Completing the Challenges
 

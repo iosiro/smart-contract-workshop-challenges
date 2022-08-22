@@ -4,7 +4,7 @@
 
 # Solidity/Javascript Example Code
 
-The `SolidityIntro` contract (`contracts/SolidityIntro.sol`) and `JavascriptExampleCode.js` script (`scripts/JavascriptExampleCode.js`) provide some example syntax to get around from scratch. The `SolidityIntro` contract demonstrates some basic language concepts, and the `JavascriptExampleCode.js` script shows how to deploy and interact with smart contracts using `hardhat`'s `ethers` module. It should be sufficient to get you going. To run the example Javascript code, execute the following:
+The `SolidityIntro` contract (`contracts/SolidityIntro.sol`) and `JavascriptExampleCode.js` script (`scripts/JavascriptExampleCode.js`) provide some example syntax to get you started. `SolidityIntro.sol` demonstrates some basic language concepts, and `JavascriptExampleCode.js` shows how to deploy and interact with smart contracts using HardHat's `ethers` module. It should be sufficient to get you going. To run the example JavaScript, execute the following:
 
 `npx hardhat run scripts/JavascriptExampleCode.js`
 

@@ -2,7 +2,21 @@
 
 `npm install`
 
-# Run Challenges
+# Solidity/Javascript Example Code
+
+The `SolidityIntro` contract (`contracts/SolidityIntro.sol`) and `JavascriptExampleCode.js` script (`scripts/JavascriptExampleCode.js`) provide some example syntax to get you started. `SolidityIntro.sol` demonstrates some basic language concepts, and `JavascriptExampleCode.js` shows how to deploy and interact with smart contracts using HardHat's `ethers` module. It should be sufficient to get you going. To run the example JavaScript, execute the following:
+
+`npx hardhat run scripts/JavascriptExampleCode.js`
+
+# Challenges
+
+The challenge contracts can all be found in the `contracts` directory. Try them from easiest to hardest, in the following order:
+
+* `Telephone.sol`: How could `msg.sender` potentially change over the course of a transaction?
+* `CoinFlip.sol`: A game of chance on the inherently deterministic blockchain. Smart.
+* `Reentrancy.sol`: Perhaps one of the most common classes of vulnerabilities in crypto space. Sometimes smart contracts don't anticipate the side-effects of giving execution to another, potentially malicious, contract halfway through executing a function.
+
+## Completing the Challenges
 
 In order to complete a challenge, you need to add your exploit code to the test file with the same name. After writing your exploit, the associated challenge's test can be triggered by running:
 

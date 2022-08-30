@@ -1,6 +1,23 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
+/*
+    This is an example contract to demonstrate some basic solidity
+    syntax. It shows creating/using access modifiers, transferring eth,
+    accepting eth, making external calls, etc.
+*/
+
+contract PriceOracle {
+
+    // This price oracle is pretty dumb. It just returns 0.5 ether
+    // as the price.
+    uint private constant _tokenPrice = 0.5 ether;
+
+    function getLatestPrice() public pure returns (uint256) {
+        return 0.5 ether;
+    }
+}
+
 contract SolidityIntro {
     //  Privileged users of the contract
     address public owner;
@@ -12,17 +29,20 @@ contract SolidityIntro {
     // The total supply of tokens that have been minted
     uint public totalSupply;
 
-    // The tokens in this contract can be bought directly for 0.5 ether.
-    uint private constant _tokenPrice = 0.5 ether;
+    // The price oracle contract which we want to call from this contract
+    PriceOracle _priceOracle;
 
     //  The constructor is only executed when the contract is deployed.
     //  A contract does not have to be written with a constructor, which
     //  will simply imply an empty constructor.
-    constructor(address _minter) {
+    constructor(address _minter, address priceOracle) {
         minter = _minter;
         // msg.sender is built-in, and can be used to retrieve the address of the
         // function caller. In the constructor, this will be the contract creator.
         owner = msg.sender;
+
+        // we can cast an address to a contract!
+        _priceOracle = PriceOracle(priceOracle);
     }
 
     //  modifiers provide a convenient way to write reusable "checks" that should
@@ -73,8 +93,10 @@ contract SolidityIntro {
         return balances[account];
     }
 
-    function priceForTokens(uint amount) public pure returns (uint) {
-        return _tokenPrice * amount;
+    function priceOf(uint amount) public view returns (uint) {
+        // and this is how we would make an external call to another contract
+        // from our contract
+        return _priceOracle.getLatestPrice() * amount;
     }
 
     // 05 - A function can be made "payable" to indicate that ether can be attached to the

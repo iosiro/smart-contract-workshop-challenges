@@ -23,7 +23,8 @@ describe('[Challenge] Reentrance', function () {
     after(async function() {
         // expect the eth balance of the Reentrance contract to be zero
         expect(
-            await ethers.provider.getBalance(this.reentrance.address)
+            await ethers.provider.getBalance(this.reentrance.address),
+            "The eth balance of the Reentrance contract is not zero"
         ).to.be.eq(0);
     });
 

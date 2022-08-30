@@ -16,7 +16,8 @@ describe('[Challenge] CoinFlip', function () {
     after(async function() {
         // expect 10 consecutive wins in the CoinFlip contract
         expect(
-            await this.coinFlip.consecutiveWins()
+            await this.coinFlip.consecutiveWins(),
+            "The CoinFlip contract did not record 10 consecutive wins"
         ).to.be.eq(10);
 
 

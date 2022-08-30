@@ -18,6 +18,10 @@ contract PriceOracle {
     }
 }
 
+interface IPriceOracle {
+    function getLatestPrice() external view returns (uint256);
+}
+
 contract SolidityIntro {
     //  Privileged users of the contract
     address public owner;
@@ -30,7 +34,7 @@ contract SolidityIntro {
     uint public totalSupply;
 
     // The price oracle contract which we want to call from this contract
-    PriceOracle _priceOracle;
+    IPriceOracle _priceOracle;
 
     //  The constructor is only executed when the contract is deployed.
     //  A contract does not have to be written with a constructor, which
@@ -42,7 +46,7 @@ contract SolidityIntro {
         owner = msg.sender;
 
         // we can cast an address to a contract!
-        _priceOracle = PriceOracle(priceOracle);
+        _priceOracle = IPriceOracle(priceOracle);
     }
 
     //  modifiers provide a convenient way to write reusable "checks" that should
@@ -103,7 +107,7 @@ contract SolidityIntro {
     //      transaction when calling this function. payable functions are used when a user
     //      needs to "pay" ether in order to perform a task. This is not the same as gas fees.
     function buyTokens(uint amount) public payable returns (uint) {
-        uint _price = priceForTokens(amount);
+        uint _price = priceOf(amount);
 
         // msg.value will contain the amount of ether, expressed in wei, attached to the tx
         require(msg.value == _price, "Incorrect amount of eth supplied for the purchase");
@@ -113,7 +117,7 @@ contract SolidityIntro {
     }
 
     function sellTokens(uint amount) public returns (uint) {
-        uint _price = priceForTokens(amount);
+        uint _price = priceOf(amount);
 
         _burn(msg.sender, amount);
         

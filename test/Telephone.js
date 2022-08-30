@@ -18,7 +18,8 @@ describe('[Challenge] Telephone', function () {
     after(async function() {
         // expect attacker to be the new owner of the Telephone contract
         expect(
-            await this.telephone.owner()
+            await this.telephone.owner(),
+            "The telephone contract's owner is not the address of attacker"
         ).to.be.eq(attacker.address);
     });
 

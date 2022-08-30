@@ -27,7 +27,7 @@ async function main() {
     console.log(`[2] solidityIntroContract was deployed to ${solidityIntroContract.address}`);
 
     // to test the newly-deployed contract, let's get the price in eth for 100 tokens
-    let priceInEth = await solidityIntroContract.priceForTokens(100);
+    let priceInEth = await solidityIntroContract.priceOf(100);
     console.log(`[3] price for 100 tokens: ${ethers.utils.formatUnits(priceInEth, 18)} eth`);
 
     // let's call the mint function, and mint some tokens! remember, the mint function is 

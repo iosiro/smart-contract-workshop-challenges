@@ -1,6 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+/*
+  Why is blockchain perfectly suited for games based on chance?
+  Jk, it's not. The blockchain is deterministic, and various properties
+  stay the same during a transaction, EVEN WHEN ONE CONTRACT CALLS ANOTHER!
+  Properties like tx.hash, block.number, etc. Knowing this, can we reliably
+  call flip with a correct guess 10 times in a row? 
+*/
+
 import '@openzeppelin/contracts/utils/math/SafeMath.sol';
 
 contract CoinFlip {

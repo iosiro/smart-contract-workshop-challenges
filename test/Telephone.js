@@ -8,7 +8,7 @@ describe('[Challenge] Telephone', function () {
         [deployer, attacker] = await ethers.getSigners();
 
         // deploy Telephone contract, where deployer will be the initial owner
-        this.Telephone = await (await ethers.getContractFactory("Telephone", deployer)).deploy();
+        this.telephone = await (await ethers.getContractFactory("Telephone", deployer)).deploy();
     });
 
     it('Exploit', async function() {
@@ -18,7 +18,7 @@ describe('[Challenge] Telephone', function () {
     after(async function() {
         // expect attacker to be the new owner of the Telephone contract
         expect(
-            await this.Telephone.owner()
+            await this.telephone.owner()
         ).to.be.eq(attacker.address);
     });
 

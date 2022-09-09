@@ -1,12 +1,12 @@
 # Install Dependencies
 
-For the best experience, `NodeJS v16` is recommended (https://nodejs.org/en/download/). But with `NodeJS` and `npm` installed, simply run `npm install` from the project root to get set up.
+For the best experience, [version 16 of NodeJS](https://nodejs.org/en/download/) is recommended. With `NodeJS` and `npm` installed, simply run `npm install` from the project root to get set up.
 
 To ensure your setup works as intended, run `npx hardhat test test/JavascriptExampleCode.js` from the project root.
 
 # Solidity/Javascript Example Code
 
-The `SolidityIntro` contract (`contracts/SolidityIntro.sol`) and `JavascriptExampleCode.js` script (`test/JavascriptExampleCode.js`) provide some example syntax to get you started. `SolidityIntro.sol` demonstrates some basic language concepts, and `JavascriptExampleCode.js` shows how to deploy and interact with smart contracts using HardHat's `ethers` module. It should be sufficient to get you going. Additionally, this README also includes some Solidity and Javascript (hardhat) gotcha's!
+The `SolidityIntro` contract (`contracts/SolidityIntro.sol`) and `JavascriptExampleCode.js` script (`test/JavascriptExampleCode.js`) provide some example syntax to get you started. `SolidityIntro.sol` demonstrates some basic language concepts, and `JavascriptExampleCode.js` shows how to deploy and interact with smart contracts using HardHat's `ethers` module. It should be sufficient to get you going. Additionally, this README also includes some Solidity and Javascript/HardHat gotchas you may encounter
 
 # Challenges
 
@@ -22,7 +22,7 @@ In order to complete a challenge, you need to add your exploit code to the test 
 
 `npx hardhat test test/<challenge name>.js`
 
-## Hardhat Javascript Gotcha's
+## Hardhat Javascript Gotchas
 
 * How to import `ethers` from `hardhat`:
 
@@ -57,7 +57,7 @@ const { ethers } = require('hardhat');
     await solidityIntroInstance.connect(differentSigner).buyTokens(100, { value: ethers.utils.parseEther("50") });
 ```
 
-## Soldity Gotcha's
+## Soldity Gotchas
 
 * How to define a basic contract:
 
@@ -141,7 +141,7 @@ contract MyContract {
 
 ```
 
-* How to define a function that accepts ethereum:
+* How to define a function that accepts Ether:
 
 ```solidity
 
@@ -154,7 +154,7 @@ contract MyContract {
     receive() external payable {}
 ```
 
-* How to define a "default" function in your contract:
+* How to define a default/fallback function that runs when a non-existent function is called:
 
 ```solidity
     fallback() external /* can also add payable, if you like */ {

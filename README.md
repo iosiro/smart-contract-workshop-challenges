@@ -1,14 +1,24 @@
-# Install Dependencies
+# iosiro Smart Contract Security Workshop
 
-For the best experience, [version 16 of NodeJS](https://nodejs.org/en/download/) is recommended. With `NodeJS` and `npm` installed, simply run `npm install` from the project root to get set up.
+Welcome to our first workshop on smart contract security!
+
+## Installation
+
+NodeJS and NPM are required. For the best experience, [version 16 of NodeJS](https://nodejs.org/en/download/) is recommended. 
+
+```sh
+git clone https://github.com/iosiro/workshop-challenges
+cd workshop-challenges
+npm install
+```
 
 To ensure your setup works as intended, run `npx hardhat test test/JavascriptExampleCode.js` from the project root.
 
-# Solidity/Javascript Example Code
+## Solidity/Javascript example code
 
 The `SolidityIntro` contract (`contracts/SolidityIntro.sol`) and `JavascriptExampleCode.js` script (`test/JavascriptExampleCode.js`) provide some example syntax to get you started. `SolidityIntro.sol` demonstrates some basic language concepts, and `JavascriptExampleCode.js` shows how to deploy and interact with smart contracts using HardHat's `ethers` module. It should be sufficient to get you going. Additionally, this README also includes some Solidity and Javascript/HardHat gotchas you may encounter
 
-# Challenges
+## Challenges
 
 The challenge contracts can all be found in the `contracts` directory. Try them from easiest to hardest, in the following order:
 
@@ -16,13 +26,13 @@ The challenge contracts can all be found in the `contracts` directory. Try them 
 * `CoinFlip.sol`: A game of chance on the inherently deterministic blockchain. Smart.
 * `Reentrancy.sol`: Perhaps one of the most common classes of vulnerabilities in crypto space. Sometimes smart contracts don't anticipate the side-effects of giving execution to another, potentially malicious, contract halfway through executing a function.
 
-## Completing the Challenges
+### Completing the challenges
 
 In order to complete a challenge, you need to add your exploit code to the test file with the same name. After writing your exploit, the associated challenge's test can be triggered by running:
 
 `npx hardhat test test/<challenge name>.js`
 
-## Hardhat Javascript Gotchas
+### Hardhat Javascript Gotchas
 
 * How to import `ethers` from `hardhat`:
 
@@ -57,7 +67,7 @@ const { ethers } = require('hardhat');
     await solidityIntroInstance.connect(differentSigner).buyTokens(100, { value: ethers.utils.parseEther("50") });
 ```
 
-## Soldity Gotchas
+### Soldity gotchas
 
 * How to define a basic contract:
 

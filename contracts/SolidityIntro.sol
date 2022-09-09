@@ -7,17 +7,6 @@ pragma solidity ^0.8.0;
     accepting eth, making external calls, etc.
 */
 
-contract PriceOracle {
-
-    // This price oracle is pretty dumb. It just returns 0.5 ether
-    // as the price.
-    uint private constant _tokenPrice = 0.5 ether;
-
-    function getLatestPrice() public pure returns (uint256) {
-        return 0.5 ether;
-    }
-}
-
 interface IPriceOracle {
     function getLatestPrice() external view returns (uint256);
 }

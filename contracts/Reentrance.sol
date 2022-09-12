@@ -12,12 +12,8 @@ pragma solidity ^0.8.0;
 contract Reentrance {
     mapping(address => uint) public balances;
 
-  function donate(address _to) public payable {
-    balances[_to] = balances[_to] + msg.value;
-  }
-
-  function balanceOf(address _who) public view returns (uint balance) {
-    return balances[_who];
+  function deposit() public payable {
+    balances[msg.sender] = balances[msg.sender] + msg.value;
   }
 
   function withdraw(uint _amount) public {
@@ -36,5 +32,7 @@ contract Reentrance {
     }
   }
 
-  receive() external payable {}
+  receive() external payable {
+    deposit();
+  }
 }

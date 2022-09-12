@@ -11,7 +11,7 @@ describe('[Challenge] Reentrance', function () {
         this.reentrance = await (await ethers.getContractFactory("Reentrance", deployer)).deploy();
         
         // pre-fund Reentrance contract with 100 eth
-        await this.reentrance.donate(deployer.address, {
+        await this.reentrance.deposit({
             value: ethers.utils.parseEther("100")
         });
     });

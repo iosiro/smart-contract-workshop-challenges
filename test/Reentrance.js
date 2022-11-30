@@ -8,15 +8,15 @@ describe('[Challenge] Reentrance', function () {
         [deployer, attacker] = await ethers.getSigners();
 
         // deploy Reentrance contract
-        this.reentrance = await (await ethers.getContractFactory("Reentrance", deployer)).deploy();
+        this.reentrance = await (await ethers.getContractFactory('Reentrance', deployer)).deploy();
         
-        // pre-fund Reentrance contract with 100 eth
-        await this.reentrance.donate(deployer.address, {
-            value: ethers.utils.parseEther("100")
+        // pre-fund Reentrance contract with 100 ether
+        await this.reentrance.deposit({
+            value: ethers.utils.parseEther('100')
         });
     });
 
-    it('Exploit', async function() {
+    it('attempts to steal all the ether in the contract', async function() {
         // WRITE EXPLOIT HERE
     });
 
@@ -24,7 +24,7 @@ describe('[Challenge] Reentrance', function () {
         // expect the eth balance of the Reentrance contract to be zero
         expect(
             await ethers.provider.getBalance(this.reentrance.address),
-            "The eth balance of the Reentrance contract is not zero"
+            'The ether balance of the Reentrance contract is not zero'
         ).to.be.eq(0);
     });
 

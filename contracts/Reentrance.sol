@@ -16,19 +16,19 @@ contract Reentrance {
     balances[msg.sender] = balances[msg.sender] + msg.value;
   }
 
-  function withdraw(uint _amount) public {
-    if(balances[msg.sender] >= _amount) {
-      (bool result,) = msg.sender.call{value:_amount}("");
-      if(result) {
-        _amount;
-      }
-      // we've already checked that balances[msg.sender] >= amount,
-      // so literally no way there's an underflow. we might as well
-      // use unchecked to disable the builtin arithmetic overflow
-      // protection and save gas.
-      unchecked {
-        balances[msg.sender] -= _amount;
-      }
+  function balanceOf(address _who) public view returns (uint balance) {
+    return balances[_who];
+  }
+
+  function withdraw() public {
+    uint balance = balances[msg.sender];
+
+    if(balance > 0) {
+      (bool success,) = msg.sender.call{value: balance}("");
+
+      require(success, "transfer failed");
+
+      balances[msg.sender] = 0;
     }
   }
 
